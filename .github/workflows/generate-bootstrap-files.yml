@@ -49,6 +49,7 @@ jobs:
           body: |
             Update the auto-generated IANA RDAP bootstrap files in accordance with the latest servers listed in the [IANA bootstrap files](https://data.iana.org/rdap/)
           commit-message: "Update IANA RDAP bootstrap files"
+          base: "main"
           assignees: ryanmab
           reviewers: ryanmab
           add-paths: |
