@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+    labels:
+      - "dependencies"
+      - "github_actions"
+      - "chore"
+      - "bump-patch"
+
+  - package-ecosystem: gomod
+    directory: /
+    schedule:
+      interval: daily
+    labels:
+      - "dependencies"
+      - "go"
+      - "chore"
+      - "bump-patch"

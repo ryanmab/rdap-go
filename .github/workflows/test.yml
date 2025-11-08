@@ -1,0 +1,59 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: "./go.mod"
+
+      - name: Verify dependencies
+        run: go mod verify
+
+      - name: Build
+        run: go build -v ./...
+
+      - name: Run go vet
+        run: go vet ./...
+
+      - name: Install staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+      - name: Run staticcheck
+        run: staticcheck ./...
+
+      - name: Install golint
+        run: go install golang.org/x/lint/golint@latest
+
+      - name: Run golint
+        run: golint ./...
+
+      - name: Run tests
+        run: go test -race -covermode=atomic -coverprofile=coverage.out -vet=off ./...
+
+      - name: Install gcov2lcov
+        run: go install github.com/jandelgado/gcov2lcov@latest
+
+      - name: Generate lcov file
+        run: gcov2lcov -infile=coverage.out -outfile=lcov.info
+
+      - uses: coverage-robot/action@v1.0.10
+        if: always()
+        with:
+          token: ${{ secrets.COVERAGE_TOKEN }}
+          files: |
+            ./lcov.info
+          tag: go
+        continue-on-error: true

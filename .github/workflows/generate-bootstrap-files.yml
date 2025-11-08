@@ -1,0 +1,55 @@
+name: Bootstrap
+
+on:
+  push:
+    paths:
+      - ".github/workflows/generate-bootstrap-files.yml"
+
+  workflow_dispatch:
+
+  schedule:
+    - cron: "7 7 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: "./go.mod"
+
+      - name: Verify dependencies
+        run: go mod verify
+
+      - name: Generate DNS bootstrap
+        run: go run ./internal/cmd/dns
+
+      - name: Generate IPv4
+        run: go run ./internal/cmd/ipv4
+
+      - name: Generate IPv6
+        run: go run ./internal/cmd/ipv6
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          sign-commits: true
+          signoff: true
+          branch: chore/update-bootstrap-files
+          branch-suffix: timestamp
+          title: "[Bootstrap] Update IANA RDAP bootstrap files"
+          body: |
+            Update the auto-generated IANA RDAP bootstrap files in accordance with the latest servers listed in the [IANA bootstrap files](https://data.iana.org/rdap/)
+          commit-message: "Update IANA RDAP bootstrap files"
+          assignees: ryanmab
+          reviewers: ryanmab
+          add-paths: |
+            **/bootstrap_generated.go
