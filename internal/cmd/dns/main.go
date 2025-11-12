@@ -16,7 +16,7 @@ func main() {
 
 	log.Printf("Fetched DNS bootstrap data version %s published at %s. There are %d services", bootstrapResponse.Version, bootstrapResponse.Publication, len(bootstrapResponse.Services))
 
-	f, err := os.Create("internal/registry/dns/bootstrap_generated.go")
+	f, err := os.Create("internal/registry/internal/dns/bootstrap_generated.go")
 
 	if err != nil {
 		log.Fatal(err)
@@ -36,7 +36,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Printf("Wrote DNS bootstrap data to internal/dns/bootstrap_generated.go")
+	log.Printf("Wrote DNS bootstrap data to internal/registry/internal/dns/bootstrap_generated.go")
 }
 
 // Generate the Go source code for the DNS bootstrap map based on the fetched data
