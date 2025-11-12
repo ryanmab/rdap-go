@@ -1,16 +1,12 @@
 package dns
 
-import (
-	"fmt"
-
-	response "github.com/ryanmab/rdap-go/pkg/client/response"
-)
+import "github.com/ryanmab/rdap-go/pkg/client/response"
 
 // Response represents the RDAP response structure for domain queries.
-//
 // See: https://datatracker.ietf.org/doc/rfc9083/
 type Response struct {
 	// An array of strings each providing a hint as to the
+	// specifications used in the construction of the
 	Conformance []string `json:"rdapConformance" validate:"dive,required"`
 
 	ObjectType string `json:"objectClassName" validate:"required,eq=domain"`
@@ -51,15 +47,4 @@ type Response struct {
 	} `json:"secureDNS,omitempty"`
 
 	Entities []response.Entity `json:"entities,omitempty" validate:"dive,required"`
-}
-
-// GetServers returns the RDAP servers for a given TLD from the IANA bootstrap data.
-//
-// See: https://data.iana.org/rdap/
-func GetServers(tld string) ([]string, error) {
-	if servers, ok := Bootstrap[tld]; ok {
-		return servers, nil
-	}
-
-	return nil, fmt.Errorf("no RDAP servers found for TLD: %s", tld)
 }

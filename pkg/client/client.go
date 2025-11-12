@@ -10,10 +10,11 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/ryanmab/rdap-go/internal/cache"
-	"github.com/ryanmab/rdap-go/internal/dns"
-	"github.com/ryanmab/rdap-go/internal/ipv4"
-	"github.com/ryanmab/rdap-go/internal/ipv6"
 	"github.com/ryanmab/rdap-go/internal/model"
+	"github.com/ryanmab/rdap-go/internal/registry"
+	"github.com/ryanmab/rdap-go/pkg/client/response/dns"
+	"github.com/ryanmab/rdap-go/pkg/client/response/ipv4"
+	"github.com/ryanmab/rdap-go/pkg/client/response/ipv6"
 )
 
 // Client is an RDAP client for performing lookups on domains, IPv4, and IPv6 addresses.
@@ -47,7 +48,7 @@ func (client *Client) LookupDomain(domain string) (*dns.Response, error) {
 
 	slog.Info("Parsed domain to TLD for lookup", "domain", domain, "tld", tld)
 
-	servers, err := dns.GetServers(tld)
+	servers, err := registry.GetServers(model.DomainQuery, tld)
 
 	if err != nil {
 		slog.Error("failed to get RDAP servers for TLD", "tld", tld, "error", err)
@@ -66,7 +67,7 @@ func (client *Client) LookupDomain(domain string) (*dns.Response, error) {
 // LookupIPv4 looks up an IPv4 address, using RDAP and retrieves its IP registration data.
 func (client *Client) LookupIPv4(ip string) (*ipv4.Response, error) {
 	ip = strings.TrimSpace(ip)
-	servers, err := ipv4.GetServers(ip)
+	servers, err := registry.GetServers(model.IPv4Query, ip)
 
 	if err != nil {
 		slog.Error("failed to get RDAP servers for IPv4 address", "ipv4", ip, "error", err)
@@ -85,7 +86,7 @@ func (client *Client) LookupIPv4(ip string) (*ipv4.Response, error) {
 // LookupIPv6 looks up an IPv6 address, using RDAP and retrieves its IP registration data.
 func (client *Client) LookupIPv6(ip string) (*ipv6.Response, error) {
 	ip = strings.TrimSpace(ip)
-	servers, err := ipv6.GetServers(ip)
+	servers, err := registry.GetServers(model.IPv6Query, ip)
 
 	if err != nil {
 		slog.Error("failed to get RDAP servers for IPv6 address", "ipv6", ip, "error", err)
@@ -133,11 +134,17 @@ func (client *Client) request(servers []string, queryType model.RdapQuery, ident
 			continue
 		}
 
+		if serverResponse.StatusCode != http.StatusOK {
+			slog.Warn("RDAP server request returned non-200 status code. Using another server if available.", "server", server, "code", serverResponse.StatusCode)
+			continue
+		}
+
 		defer serverResponse.Body.Close()
 
 		response, err := parseResponse(queryType, serverResponse)
 
 		if err != nil {
+			slog.Warn("Failed to parse RDAP server  Using another server if available.", "server", server, "error", err)
 			return response, err
 		}
 

@@ -19,7 +19,7 @@ func main() {
 
 	log.Printf("Fetched IPv6 bootstrap data version %s published at %s. There are %d services", bootstrapResponse.Version, bootstrapResponse.Publication, len(bootstrapResponse.Services))
 
-	f, err := os.Create("internal/ipv6/bootstrap_generated.go")
+	f, err := os.Create("internal/registry/ipv6/bootstrap_generated.go")
 
 	if err != nil {
 		log.Fatal(err)
