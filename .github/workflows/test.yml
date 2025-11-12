@@ -43,17 +43,11 @@ jobs:
       - name: Run tests
         run: go test -race -covermode=atomic -coverprofile=coverage.out -vet=off ./...
 
-      - name: Install gcov2lcov
-        run: go install github.com/jandelgado/gcov2lcov@latest
-
-      - name: Generate lcov file
-        run: gcov2lcov -infile=coverage.out -outfile=lcov.info
-
       - uses: coverage-robot/action@v1.0.10
         if: always()
         with:
           token: ${{ secrets.COVERAGE_TOKEN }}
           files: |
-            ./lcov.info
+            ./coverage.out
           tag: go
         continue-on-error: true
