@@ -1,4 +1,4 @@
-package model
+package response
 
 import "time"
 
@@ -95,11 +95,48 @@ const (
 	StatusPendingDelete Status = "pending delete"
 )
 
+// Action represents a particular action which drove an event to be recorded, according to
+// the RDAP specification.
+//
+// See Section 10.2.3: https://datatracker.ietf.org/doc/rfc9083/
+type Action string
+
+const (
+	// ActionRegistration signifies the registration of the object instance.
+	ActionRegistration Action = "registration"
+
+	// ActionReregistration signifies the reregistration of the object instance.
+	ActionReregistration Action = "reregistration"
+
+	// ActionLastChanged signifies a note of when the information of the object instance
+	// was last changed.
+	ActionLastChanged Action = "last changed"
+
+	// ActionExpiration signifies the expiration of the object instance's registration.
+	ActionExpiration Action = "expiration"
+
+	// ActionDeletion signifies the deletion or removal of the object instance's registration.
+	ActionDeletion Action = "deletion"
+
+	// ActionReinstation signifies the reinstation of the object instance's registration.
+	ActionReinstation Action = "reinstation"
+
+	// ActionTransfer signifies the transfer of the object instance's registration from
+	// one registrar to another.
+	ActionTransfer Action = "transfer"
+
+	//ActionLocked signifies that the object instance has been locked.
+	ActionLocked Action = "locked"
+
+	// ActionUnlocked signifies that the object instance has been unlocked.
+	ActionUnlocked Action = "unlocked"
+)
+
 // Event represents the RDAP specification's event object.
 //
 // See Section 4.5: https://datatracker.ietf.org/doc/rfc9083/
 type Event struct {
-	Action string    `json:"eventAction"`
+	Action Action    `json:"eventAction" validate:"required"`
 	Actor  *string   `json:"eventActor,omitempty"`
 	Date   time.Time `json:"eventDate,format:datetime"`
 }

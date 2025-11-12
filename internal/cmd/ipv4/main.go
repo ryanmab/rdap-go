@@ -10,15 +10,15 @@ import (
 	"time"
 
 	"github.com/ryanmab/rdap-go/internal/cmd/internal/bootstrap"
-	"github.com/ryanmab/rdap-go/internal/model"
+	"github.com/ryanmab/rdap-go/internal/query"
 )
 
 func main() {
-	bootstrapResponse := bootstrap.FetchBootstrap(model.IPv4Query)
+	bootstrapResponse := bootstrap.FetchBootstrap(query.IPv4Query)
 
 	log.Printf("Fetched IPv4 bootstrap data version %s published at %s. There are %d services", bootstrapResponse.Version, bootstrapResponse.Publication, len(bootstrapResponse.Services))
 
-	f, err := os.Create("internal/ipv4/bootstrap_generated.go")
+	f, err := os.Create("internal/registry/ipv4/bootstrap_generated.go")
 
 	if err != nil {
 		log.Fatal(err)
