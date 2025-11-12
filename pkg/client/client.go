@@ -144,7 +144,7 @@ func (client *Client) request(servers []string, queryType model.RdapQuery, ident
 		response, err := parseResponse(queryType, serverResponse)
 
 		if err != nil {
-			slog.Warn("Failed to parse RDAP server  Using another server if available.", "server", server, "error", err)
+			slog.Warn("Failed to parse RDAP server response. Using another server if available.", "server", server, "error", err)
 			return response, err
 		}
 
