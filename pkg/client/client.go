@@ -13,7 +13,6 @@ import (
 	"github.com/ryanmab/rdap-go/internal/dns"
 	"github.com/ryanmab/rdap-go/internal/ipv4"
 	"github.com/ryanmab/rdap-go/internal/ipv6"
-
 	"github.com/ryanmab/rdap-go/internal/model"
 )
 
@@ -139,7 +138,6 @@ func (client *Client) request(servers []string, queryType model.RdapQuery, ident
 		response, err := parseResponse(queryType, serverResponse)
 
 		if err != nil {
-			slog.Warn("Failed to parse RDAP server response. Using another server if available.", "server", server, "error", err)
 			return response, err
 		}
 

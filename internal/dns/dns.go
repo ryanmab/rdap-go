@@ -3,7 +3,7 @@ package dns
 import (
 	"fmt"
 
-	"github.com/ryanmab/rdap-go/internal/model"
+	response "github.com/ryanmab/rdap-go/pkg/client/response"
 )
 
 // Response represents the RDAP response structure for domain queries.
@@ -11,7 +11,6 @@ import (
 // See: https://datatracker.ietf.org/doc/rfc9083/
 type Response struct {
 	// An array of strings each providing a hint as to the
-	// specifications used in the construction of the response.
 	Conformance []string `json:"rdapConformance" validate:"dive,required"`
 
 	ObjectType string `json:"objectClassName" validate:"required,eq=domain"`
@@ -23,11 +22,11 @@ type Response struct {
 	// A string describing a domain name in Unicode form
 	UnicodeName *string `json:"unicodeName,omitempty"`
 
-	Events []model.Event  `json:"events" validate:"dive,required"`
-	Status []model.Status `json:"status" validate:"dive,required"`
-	Links  []model.Link   `json:"links,omitempty" validate:"dive,required"`
+	Events []response.Event  `json:"events" validate:"dive,required"`
+	Status []response.Status `json:"status" validate:"dive,required"`
+	Links  []response.Link   `json:"links,omitempty" validate:"dive,required"`
 
-	Nameservers []model.Nameserver `json:"nameservers" validate:"dive"`
+	Nameservers []response.Nameserver `json:"nameservers" validate:"dive"`
 
 	SecureDNS *struct {
 		ZoneSigned       *bool `json:"zoneSigned,omitempty"`
@@ -35,23 +34,23 @@ type Response struct {
 		MaxSignatureLife *int  `json:"maxSigLife,omitempty" validate:"omitempty,min=0"`
 
 		DsData []struct {
-			KeyTag     int           `json:"keyTag" validate:"required,min=0"`
-			Algorithm  int           `json:"algorithm" validate:"required,min=0"`
-			DigestType int           `json:"digestType" validate:"required,min=0"`
-			Digest     string        `json:"digest" validate:"required"`
-			Events     []model.Event `json:"events,omitempty" validate:"dive,required"`
+			KeyTag     int              `json:"keyTag" validate:"required,min=0"`
+			Algorithm  int              `json:"algorithm" validate:"required,min=0"`
+			DigestType int              `json:"digestType" validate:"required,min=0"`
+			Digest     string           `json:"digest" validate:"required"`
+			Events     []response.Event `json:"events,omitempty" validate:"dive,required"`
 		} `json:"dsData,omitempty" validate:"dive"`
 
 		KeyData []struct {
-			Flags     int           `json:"flags" validate:"required,min=0"`
-			Protocol  int           `json:"protocol" validate:"required,min=0"`
-			Algorithm int           `json:"algorithm" validate:"required,min=0"`
-			PublicKey string        `json:"publicKey" validate:"required"`
-			Events    []model.Event `json:"events,omitempty" validate:"dive,required"`
+			Flags     int              `json:"flags" validate:"required,min=0"`
+			Protocol  int              `json:"protocol" validate:"required,min=0"`
+			Algorithm int              `json:"algorithm" validate:"required,min=0"`
+			PublicKey string           `json:"publicKey" validate:"required"`
+			Events    []response.Event `json:"events,omitempty" validate:"dive,required"`
 		} `json:"keyData,omitempty" validate:"dive"`
 	} `json:"secureDNS,omitempty"`
 
-	Entities []model.Entity `json:"entities,omitempty" validate:"dive,required"`
+	Entities []response.Entity `json:"entities,omitempty" validate:"dive,required"`
 }
 
 // GetServers returns the RDAP servers for a given TLD from the IANA bootstrap data.

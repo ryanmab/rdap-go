@@ -5,7 +5,7 @@ import (
 	"net"
 	"strings"
 
-	"github.com/ryanmab/rdap-go/internal/model"
+	response "github.com/ryanmab/rdap-go/pkg/client/response"
 )
 
 // Response represents the RDAP response structure for ipv6 queries.
@@ -13,7 +13,6 @@ import (
 // See: https://datatracker.ietf.org/doc/rfc9083/
 type Response struct {
 	// An array of strings each providing a hint as to the
-	// specifications used in the construction of the response.
 	Conformance []string `json:"rdapConformance" validate:"dive,required"`
 
 	ObjectType   string `json:"objectClassName" validate:"required,eq=ip network"`
@@ -27,12 +26,12 @@ type Response struct {
 	EndAddress   string `json:"endAddress" validate:"required,ipv6"`
 	IPVersion    string `json:"ipVersion" validate:"required,eq=v6"`
 
-	Events []model.Event  `json:"events" validate:"dive,required"`
-	Status []model.Status `json:"status" validate:"dive,required"`
+	Events []response.Event  `json:"events" validate:"dive,required"`
+	Status []response.Status `json:"status" validate:"dive,required"`
 
-	Entities []model.Entity `json:"entities,omitempty" validate:"dive,required"`
+	Entities []response.Entity `json:"entities,omitempty" validate:"dive,required"`
 
-	Links []model.Link `json:"links,omitempty" validate:"dive,required"`
+	Links []response.Link `json:"links,omitempty" validate:"dive,required"`
 }
 
 // GetServers returns the RDAP servers for a given IPv6 from the IANA bootstrap data.
