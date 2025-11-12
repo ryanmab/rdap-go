@@ -16,10 +16,20 @@ func TestResolvingIpV4ToServers(t *testing.T) {
 }
 
 func TestResolvingInvalidIpV4ToServersReturnsAnError(t *testing.T) {
-	ipv4 := "258.258.258.258"
-	_, err := GetServers(ipv4)
+	t.Run("greater than 255 octet", func(t *testing.T) {
+		ipv4 := "256.256.256.256"
+		_, err := GetServers(ipv4)
 
-	assert.NotNil(t, err)
+		assert.NotNil(t, err)
+	})
+
+	t.Run("smaller than 0", func(t *testing.T) {
+		ipv4 := "0.8.8.8"
+		_, err := GetServers(ipv4)
+
+		assert.NotNil(t, err)
+	})
+
 }
 
 func TestResolvingNonIpV4ToServersReturnsAnError(t *testing.T) {
