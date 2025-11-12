@@ -4,27 +4,27 @@ import (
 	"log/slog"
 	"sync"
 
-	"github.com/ryanmab/rdap-go/internal/model"
+	"github.com/ryanmab/rdap-go/internal/query"
 )
 
 // Cache is a simple in-memory cache, indexed by the query time (i.e. domain, IP,
 // ASN) and the identifier (i.e. example.com, 8.8.8.8, etc.)
 type Cache struct {
 	sync.RWMutex
-	cache map[model.RdapQuery]map[string]*any
+	cache map[query.RdapQuery]map[string]*any
 }
 
 // New creates a new in-memory cache instance which can be used to store RDAP responses
 // and prevent redundant network requests.
 func New() *Cache {
 	return &Cache{
-		cache:   make(map[model.RdapQuery]map[string]*any),
+		cache:   make(map[query.RdapQuery]map[string]*any),
 		RWMutex: sync.RWMutex{},
 	}
 }
 
 // Get a cached RDAP response for the given query and identifier, or nil if not found.
-func (cache *Cache) Get(query model.RdapQuery, identifier string) *any {
+func (cache *Cache) Get(query query.RdapQuery, identifier string) *any {
 	cache.RLock()
 	defer cache.RUnlock()
 
@@ -37,7 +37,7 @@ func (cache *Cache) Get(query model.RdapQuery, identifier string) *any {
 }
 
 // Set a cached RDAP response for the given query and identifier.
-func (cache *Cache) Set(q model.RdapQuery, identifier string, response any) {
+func (cache *Cache) Set(q query.RdapQuery, identifier string, response any) {
 	cache.Lock()
 	defer cache.Unlock()
 
@@ -54,5 +54,5 @@ func (cache *Cache) Clear() {
 	cache.Lock()
 	defer cache.Unlock()
 
-	cache.cache = make(map[model.RdapQuery]map[string]*any)
+	cache.cache = make(map[query.RdapQuery]map[string]*any)
 }

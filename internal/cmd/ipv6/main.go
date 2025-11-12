@@ -11,11 +11,11 @@ import (
 	"time"
 
 	"github.com/ryanmab/rdap-go/internal/cmd/internal/bootstrap"
-	"github.com/ryanmab/rdap-go/internal/model"
+	"github.com/ryanmab/rdap-go/internal/query"
 )
 
 func main() {
-	bootstrapResponse := bootstrap.FetchBootstrap(model.IPv6Query)
+	bootstrapResponse := bootstrap.FetchBootstrap(query.IPv6Query)
 
 	log.Printf("Fetched IPv6 bootstrap data version %s published at %s. There are %d services", bootstrapResponse.Version, bootstrapResponse.Publication, len(bootstrapResponse.Services))
 

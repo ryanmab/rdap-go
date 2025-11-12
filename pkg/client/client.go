@@ -10,7 +10,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/ryanmab/rdap-go/internal/cache"
-	"github.com/ryanmab/rdap-go/internal/model"
+	"github.com/ryanmab/rdap-go/internal/query"
 	"github.com/ryanmab/rdap-go/internal/registry"
 	"github.com/ryanmab/rdap-go/pkg/client/response/dns"
 	"github.com/ryanmab/rdap-go/pkg/client/response/ipv4"
@@ -48,14 +48,14 @@ func (client *Client) LookupDomain(domain string) (*dns.Response, error) {
 
 	slog.Info("Parsed domain to TLD for lookup", "domain", domain, "tld", tld)
 
-	servers, err := registry.GetServers(model.DomainQuery, tld)
+	servers, err := registry.GetServers(query.DomainQuery, tld)
 
 	if err != nil {
 		slog.Error("failed to get RDAP servers for TLD", "tld", tld, "error", err)
 		return nil, err
 	}
 
-	response, err := client.request(servers, model.DomainQuery, url.Hostname())
+	response, err := client.request(servers, query.DomainQuery, url.Hostname())
 
 	if response, ok := response.(dns.Response); ok {
 		return &response, err
@@ -67,14 +67,14 @@ func (client *Client) LookupDomain(domain string) (*dns.Response, error) {
 // LookupIPv4 looks up an IPv4 address, using RDAP and retrieves its IP registration data.
 func (client *Client) LookupIPv4(ip string) (*ipv4.Response, error) {
 	ip = strings.TrimSpace(ip)
-	servers, err := registry.GetServers(model.IPv4Query, ip)
+	servers, err := registry.GetServers(query.IPv4Query, ip)
 
 	if err != nil {
 		slog.Error("failed to get RDAP servers for IPv4 address", "ipv4", ip, "error", err)
 		return nil, err
 	}
 
-	response, err := client.request(servers, model.IPv4Query, ip)
+	response, err := client.request(servers, query.IPv4Query, ip)
 
 	if response, ok := response.(ipv4.Response); ok {
 		return &response, err
@@ -86,14 +86,14 @@ func (client *Client) LookupIPv4(ip string) (*ipv4.Response, error) {
 // LookupIPv6 looks up an IPv6 address, using RDAP and retrieves its IP registration data.
 func (client *Client) LookupIPv6(ip string) (*ipv6.Response, error) {
 	ip = strings.TrimSpace(ip)
-	servers, err := registry.GetServers(model.IPv6Query, ip)
+	servers, err := registry.GetServers(query.IPv6Query, ip)
 
 	if err != nil {
 		slog.Error("failed to get RDAP servers for IPv6 address", "ipv6", ip, "error", err)
 		return nil, err
 	}
 
-	response, err := client.request(servers, model.IPv6Query, ip)
+	response, err := client.request(servers, query.IPv6Query, ip)
 
 	if response, ok := response.(ipv6.Response); ok {
 		return &response, err
@@ -119,7 +119,7 @@ func (client *Client) WithCache(cache *cache.Cache) {
 }
 
 // Request performs an RDAP request to the provided servers for the given query type and identifier.
-func (client *Client) request(servers []string, queryType model.RdapQuery, identifier string) (any, error) {
+func (client *Client) request(servers []string, queryType query.RdapQuery, identifier string) (any, error) {
 	if output := client.cache.Get(queryType, identifier); output != nil {
 		slog.Info("Response cache hit. Using cached response instead of performing RDAP request", "identifier", identifier, "query", queryType)
 
@@ -160,12 +160,12 @@ func (client *Client) request(servers []string, queryType model.RdapQuery, ident
 
 // Parse the RDAP server response based on the query type into a validated response
 // struct.
-func parseResponse(queryType model.RdapQuery, response *http.Response) (any, error) {
+func parseResponse(queryType query.RdapQuery, response *http.Response) (any, error) {
 	decoder := json.NewDecoder(response.Body)
 	validate := validator.New(validator.WithRequiredStructEnabled())
 
 	switch queryType {
-	case model.DomainQuery:
+	case query.DomainQuery:
 		var output dns.Response
 		if err := decoder.Decode(&output); err != nil {
 			return nil, err
@@ -176,7 +176,7 @@ func parseResponse(queryType model.RdapQuery, response *http.Response) (any, err
 		}
 
 		return output, nil
-	case model.IPv4Query:
+	case query.IPv4Query:
 		var output ipv4.Response
 
 		if err := decoder.Decode(&output); err != nil {
@@ -188,7 +188,7 @@ func parseResponse(queryType model.RdapQuery, response *http.Response) (any, err
 		}
 
 		return output, nil
-	case model.IPv6Query:
+	case query.IPv6Query:
 		var output ipv6.Response
 
 		if err := decoder.Decode(&output); err != nil {

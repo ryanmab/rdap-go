@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ryanmab/rdap-go/internal/model"
+	"github.com/ryanmab/rdap-go/internal/query"
 )
 
 // Service represents a single service entry in the IANA RDAP bootstrap data.
@@ -47,14 +47,14 @@ type Response struct {
 //
 // For example, DNS bootstrap data is fetched for domain queries,
 // IPv4 bootstrap data is fetched for IPv4 address queries, etc.
-func FetchBootstrap(bootstrap model.RdapQuery) Response {
+func FetchBootstrap(bootstrap query.RdapQuery) Response {
 	var url string
 	switch bootstrap {
-	case model.DomainQuery:
+	case query.DomainQuery:
 		url = "https://data.iana.org/rdap/dns.json"
-	case model.IPv4Query:
+	case query.IPv4Query:
 		url = "https://data.iana.org/rdap/ipv4.json"
-	case model.IPv6Query:
+	case query.IPv6Query:
 		url = "https://data.iana.org/rdap/ipv6.json"
 	default:
 		panic("unknown bootstrap type")
