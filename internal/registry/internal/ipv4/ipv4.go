@@ -22,7 +22,7 @@ func GetServers(ip string) ([]string, error) {
 		return nil, fmt.Errorf("out of range first octet (%s) of IPv4: %s", firstOctet, ip)
 	}
 
-	if servers, ok := Bootstrap[firstOctet]; ok {
+	if servers, ok := Bootstrap[uint8(firstOctetAsInt)]; ok {
 		return servers, nil
 	}
 
