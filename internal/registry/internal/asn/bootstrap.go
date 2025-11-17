@@ -12,5 +12,5 @@ func GetServers(asn uint32) ([]string, error) {
 		}
 	}
 
-	return nil, fmt.Errorf("no RDAP servers found for TLD: %d", asn)
+	return nil, fmt.Errorf("no RDAP servers found for ASN: %d", asn)
 }
