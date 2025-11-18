@@ -14,6 +14,8 @@ const (
 	IPv4Query
 	// IPv6Query is a lookup on an IPv6 address - e.g. 2001:4860:4860::8888
 	IPv6Query
+	// AsnQuery is a lookup on an ASN - e.g. 37888
+	AsnQuery
 )
 
 func (q RdapQuery) String() string {
@@ -24,6 +26,8 @@ func (q RdapQuery) String() string {
 		return "ip"
 	case IPv4Query:
 		return "ip"
+	case AsnQuery:
+		return "autnum"
 	default:
 		log.Panic("unknown RdapQuery type")
 		return ""

@@ -56,6 +56,8 @@ func FetchBootstrap(bootstrap query.RdapQuery) Response {
 		url = "https://data.iana.org/rdap/ipv4.json"
 	case query.IPv6Query:
 		url = "https://data.iana.org/rdap/ipv6.json"
+	case query.AsnQuery:
+		url = "https://data.iana.org/rdap/asn.json"
 	default:
 		panic("unknown bootstrap type")
 	}

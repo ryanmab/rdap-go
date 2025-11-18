@@ -16,7 +16,6 @@ go get github.com/ryanmab/rdap-go@v0.2.0
 ### Domain Lookups
 
 ```go
-
 package main
 
 import (
@@ -35,13 +34,11 @@ func main() {
 
 	log.Printf("Status: %s", response.Status)
 }
-
 ```
 
 ### IPv4 Lookups
 
 ```go
-
 package main
 
 import (
@@ -60,13 +57,11 @@ func main() {
 
 	log.Printf("Name: %s", response.Name) // GOGL
 }
-
 ```
 
 ### IPv6 Lookups
 
 ```go
-
 package main
 
 import (
@@ -85,7 +80,30 @@ func main() {
 
 	log.Printf("Name: %s", response.Name) // GOOGLE-IPV6
 }
+```
 
+### Autnum (ASN) Lookups
+```go
+package main
+
+import (
+	"encoding/json"
+	"log"
+	"time"
+
+	"github.com/ryanmab/rdap-go/pkg/client"
+)
+
+func main() {
+
+	response, err := client.LookupASN(36864)
+
+	if err != nil {
+		log.Panic(err)
+	}
+
+	log.Printf("Name: %s", response.Name) // ORG-AMS4-AFRINIC
+}
 ```
 
 ## Contributing

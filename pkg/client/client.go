@@ -6,12 +6,14 @@ import (
 	"log/slog"
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/ryanmab/rdap-go/internal/cache"
 	"github.com/ryanmab/rdap-go/internal/query"
 	"github.com/ryanmab/rdap-go/internal/registry"
+	"github.com/ryanmab/rdap-go/pkg/client/response/asn"
 	"github.com/ryanmab/rdap-go/pkg/client/response/dns"
 	"github.com/ryanmab/rdap-go/pkg/client/response/ipv4"
 	"github.com/ryanmab/rdap-go/pkg/client/response/ipv6"
@@ -100,6 +102,26 @@ func (client *Client) LookupIPv6(ip string) (*ipv6.Response, error) {
 	}
 
 	return nil, fmt.Errorf("unexpected response type returned from RDAP server call (expected ipv6.Response), type was: %T", response)
+}
+
+// LookupASN looks up a given Autnum, using RDAP and retrieves its registration data.
+func (client *Client) LookupASN(autnum uint32) (*asn.Response, error) {
+	autnumAsString := strconv.FormatUint(uint64(autnum), 10)
+
+	servers, err := registry.GetServers(query.AsnQuery, autnumAsString)
+
+	if err != nil {
+		slog.Error("failed to get RDAP servers for Autnum", "asn", autnum, "error", err)
+		return nil, err
+	}
+
+	response, err := client.request(servers, query.AsnQuery, autnumAsString)
+
+	if response, ok := response.(asn.Response); ok {
+		return &response, err
+	}
+
+	return nil, fmt.Errorf("unexpected response type returned from RDAP server call (expected asn.Response), type was: %T", response)
 
 }
 
@@ -190,6 +212,19 @@ func parseResponse(queryType query.RdapQuery, response *http.Response) (any, err
 		return output, nil
 	case query.IPv6Query:
 		var output ipv6.Response
+
+		if err := decoder.Decode(&output); err != nil {
+			return nil, err
+		}
+
+		if err := validate.Struct(output); err != nil {
+			return nil, err
+		}
+
+		return output, nil
+
+	case query.AsnQuery:
+		var output asn.Response
 
 		if err := decoder.Decode(&output); err != nil {
 			return nil, err

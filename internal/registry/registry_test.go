@@ -34,3 +34,20 @@ func TestResolvingIPv6AddressToServers(t *testing.T) {
 
 	assert.Equal(t, []string{"https://rdap.apnic.net/"}, servers)
 }
+
+func TestResolvingASNToServers(t *testing.T) {
+	asn := "394241"
+
+	servers, err := GetServers(query.AsnQuery, asn)
+
+	assert.Nil(t, err)
+
+	assert.Equal(
+		t,
+		[]string{
+			"https://rdap.arin.net/registry/",
+			"http://rdap.arin.net/registry/",
+		},
+		servers,
+	)
+}
