@@ -12,7 +12,7 @@ func main() {
 	client := client.New()
 
 	start := time.Now()
-	response, err := client.LookupASN("36864")
+	response, err := client.LookupASN(36864)
 	log.Printf("Lookup took: %s", time.Since(start))
 
 	if err != nil {

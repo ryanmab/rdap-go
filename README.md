@@ -96,7 +96,7 @@ import (
 
 func main() {
 
-	response, err := client.LookupASN("36864")
+	response, err := client.LookupASN(36864)
 
 	if err != nil {
 		log.Panic(err)
