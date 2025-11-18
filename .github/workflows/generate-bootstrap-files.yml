@@ -38,6 +38,9 @@ jobs:
       - name: Generate IPv6
         run: go run ./internal/cmd/ipv6
 
+      - name: Generate ASN
+        run: go run ./internal/cmd/asn
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
