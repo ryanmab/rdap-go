@@ -14,7 +14,7 @@ type Response struct {
 
 	Name string `json:"name" validate:"required"`
 
-	Lang string `json:"lang" validate:"required"`
+	Lang string `json:"lang"`
 
 	Events []response.Event  `json:"events" validate:"dive,required"`
 	Status []response.Status `json:"status" validate:"dive,required"`

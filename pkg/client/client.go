@@ -6,6 +6,7 @@ import (
 	"log/slog"
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 
 	"github.com/go-playground/validator/v10"
@@ -104,16 +105,17 @@ func (client *Client) LookupIPv6(ip string) (*ipv6.Response, error) {
 }
 
 // LookupASN looks up a given Autnum, using RDAP and retrieves its registration data.
-func (client *Client) LookupASN(autnum string) (*asn.Response, error) {
-	autnum = strings.TrimSpace(autnum)
-	servers, err := registry.GetServers(query.AsnQuery, autnum)
+func (client *Client) LookupASN(autnum uint32) (*asn.Response, error) {
+	autnumAsString := strconv.FormatUint(uint64(autnum), 10)
+
+	servers, err := registry.GetServers(query.AsnQuery, autnumAsString)
 
 	if err != nil {
 		slog.Error("failed to get RDAP servers for Autnum", "asn", autnum, "error", err)
 		return nil, err
 	}
 
-	response, err := client.request(servers, query.AsnQuery, autnum)
+	response, err := client.request(servers, query.AsnQuery, autnumAsString)
 
 	if response, ok := response.(asn.Response); ok {
 		return &response, err

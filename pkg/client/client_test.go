@@ -125,3 +125,30 @@ func TestLookingUpIpV6(t *testing.T) {
 		assert.Equal(t, "GOOGLE-IPV6", response.Name)
 	})
 }
+
+func TestLookingUpASN(t *testing.T) {
+	client := New()
+
+	t.Run("Valid ASN", func(t *testing.T) {
+		client.ClearCache()
+
+		response, err := client.LookupASN(63489)
+
+		assert.NoError(t, err)
+
+		assert.NotNil(t, response)
+
+		assert.Equal(t, "IDNIC-BPRTIK-AS-ID", response.Name)
+	})
+
+	t.Run("Invalid ASN", func(t *testing.T) {
+		client.ClearCache()
+
+		response, err := client.LookupASN(000000)
+
+		assert.Error(t, err)
+
+		assert.Nil(t, response)
+	})
+
+}
