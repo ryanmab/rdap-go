@@ -87,15 +87,11 @@ func main() {
 package main
 
 import (
-	"encoding/json"
-	"log"
-	"time"
-
 	"github.com/ryanmab/rdap-go/pkg/client"
+    "log"
 )
 
 func main() {
-
 	response, err := client.LookupASN(36864)
 
 	if err != nil {
