@@ -40,8 +40,11 @@ jobs:
       - name: Run golint
         run: golint ./...
 
+      - name: Instal gotestsum
+        run: go install gotest.tools/gotestsum@latest
+
       - name: Run tests
-        run: go test -race -covermode=atomic -coverprofile=coverage.out -vet=off ./...
+        run: gotestsum --format github-actions -- -race -covermode=atomic -coverprofile=coverage.out -vet=off ./...
 
       - uses: coverage-robot/action@v1.0.10
         if: always()
