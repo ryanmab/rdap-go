@@ -6,7 +6,7 @@ package asn
 
 // Bootstrap is the ASN RDAP bootstrap data sourced from IANA.
 //
-// Source (version: 1.0, publication date: 2025-01-17T20:00:02Z): https://data.iana.org/rdap/asn.json
+// Source (version: 1.0, publication date: 2025-11-19T20:00:02Z): https://data.iana.org/rdap/asn.json
 var Bootstrap = map[[2]uint32][]string{
 	{36864, 37887}: {
 		"https://rdap.afrinic.net/rdap/",
@@ -505,6 +505,9 @@ var Bootstrap = map[[2]uint32][]string{
 		"https://rdap.lacnic.net/rdap/",
 	},
 	{273821, 274844}: {
+		"https://rdap.lacnic.net/rdap/",
+	},
+	{274845, 275868}: {
 		"https://rdap.lacnic.net/rdap/",
 	},
 }
