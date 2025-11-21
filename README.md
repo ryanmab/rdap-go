@@ -10,7 +10,7 @@ A fast Go client for performing lookups of DNS records, IPv4 addresses and IPv6 
 ## Usage
 
 ```
-go get github.com/ryanmab/rdap-go@v0.2.1
+go get github.com/ryanmab/rdap-go@latest
 ```
 
 ### Domain Lookups
