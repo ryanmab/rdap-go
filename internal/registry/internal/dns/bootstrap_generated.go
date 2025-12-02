@@ -6,7 +6,7 @@ package dns
 
 // Bootstrap is the DNS RDAP bootstrap data sourced from IANA.
 //
-// Source (version: 1.0, publication date: 2025-11-06T23:00:01Z): https://data.iana.org/rdap/dns.json
+// Source (version: 1.0, publication date: 2025-12-01T19:00:01Z): https://data.iana.org/rdap/dns.json
 var Bootstrap = map[string][]string{
 	"kg": {
 		"http://rdap.cctld.kg/",
@@ -2111,6 +2111,9 @@ var Bootstrap = map[string][]string{
 	"aig": {
 		"https://rdap.nic.aig/",
 	},
+	"airtel": {
+		"https://rdap.nic.airtel/",
+	},
 	"ally": {
 		"https://rdap.nic.ally/",
 	},
@@ -2197,6 +2200,9 @@ var Bootstrap = map[string][]string{
 	},
 	"berlin": {
 		"https://rdap.nic.berlin/v1/",
+	},
+	"bharti": {
+		"https://rdap.nic.bharti/",
 	},
 	"bible": {
 		"https://rdap.nic.bible/",
@@ -3499,12 +3505,6 @@ var Bootstrap = map[string][]string{
 	},
 	"xn--xhq521b": {
 		"https://restwhois.ngtld.cn/",
-	},
-	"airtel": {
-		"https://tld-rdap.verisign.com/airtel/v1/",
-	},
-	"bharti": {
-		"https://tld-rdap.verisign.com/bharti/v1/",
 	},
 	"cc": {
 		"https://tld-rdap.verisign.com/cc/v1/",
