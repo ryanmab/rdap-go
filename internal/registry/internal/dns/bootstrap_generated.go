@@ -6,7 +6,7 @@ package dns
 
 // Bootstrap is the DNS RDAP bootstrap data sourced from IANA.
 //
-// Source (version: 1.0, publication date: 2025-12-02T19:00:02Z): https://data.iana.org/rdap/dns.json
+// Source (version: 1.0, publication date: 2025-12-08T23:00:01Z): https://data.iana.org/rdap/dns.json
 var Bootstrap = map[string][]string{
 	"kg": {
 		"http://rdap.cctld.kg/",
@@ -1499,6 +1499,9 @@ var Bootstrap = map[string][]string{
 	"ninja": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
+	"nissay": {
+		"https://rdap.identitydigital.services/rdap/",
+	},
 	"nowtv": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
@@ -1955,6 +1958,9 @@ var Bootstrap = map[string][]string{
 	"xn--1ck2e1b": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
+	"xn--5su34j936bgsg": {
+		"https://rdap.identitydigital.services/rdap/",
+	},
 	"xn--5tzm5g": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
@@ -2004,6 +2010,12 @@ var Bootstrap = map[string][]string{
 		"https://rdap.identitydigital.services/rdap/",
 	},
 	"xn--vhquv": {
+		"https://rdap.identitydigital.services/rdap/",
+	},
+	"xn--w4r85el8fhu5dnra": {
+		"https://rdap.identitydigital.services/rdap/",
+	},
+	"xn--w4rs40l": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
 	"yahoo": {
@@ -2158,6 +2170,9 @@ var Bootstrap = map[string][]string{
 	},
 	"aramco": {
 		"https://rdap.nic.aramco/",
+	},
+	"as": {
+		"https://rdap.nic.as/",
 	},
 	"athleta": {
 		"https://rdap.nic.athleta/",
@@ -3515,9 +3530,6 @@ var Bootstrap = map[string][]string{
 	"name": {
 		"https://tld-rdap.verisign.com/name/v1/",
 	},
-	"nissay": {
-		"https://tld-rdap.verisign.com/nissay/v1/",
-	},
 	"verisign": {
 		"https://tld-rdap.verisign.com/verisign/v1/",
 	},
@@ -3529,9 +3541,6 @@ var Bootstrap = map[string][]string{
 	},
 	"xn--42c2d9a": {
 		"https://tld-rdap.verisign.com/xn--42c2d9a/v1/",
-	},
-	"xn--5su34j936bgsg": {
-		"https://tld-rdap.verisign.com/xn--5su34j936bgsg/v1/",
 	},
 	"xn--9dbq2a": {
 		"https://tld-rdap.verisign.com/xn--9dbq2a/v1/",
@@ -3556,12 +3565,6 @@ var Bootstrap = map[string][]string{
 	},
 	"xn--tckwe": {
 		"https://tld-rdap.verisign.com/xn--tckwe/v1/",
-	},
-	"xn--w4r85el8fhu5dnra": {
-		"https://tld-rdap.verisign.com/xn--w4r85el8fhu5dnra/v1/",
-	},
-	"xn--w4rs40l": {
-		"https://tld-rdap.verisign.com/xn--w4rs40l/v1/",
 	},
 	"ky": {
 		"https://whois.kyregistry.ky/rdap/",
