@@ -46,7 +46,7 @@ jobs:
       - name: Run tests
         run: gotestsum --format github-actions -- -race -covermode=atomic -coverprofile=coverage.out -vet=off ./...
 
-      - uses: coverage-robot/action@v1.0.10
+      - uses: coverage-robot/action@v1.0.11
         if: always()
         with:
           token: ${{ secrets.COVERAGE_TOKEN }}
