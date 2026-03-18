@@ -6,7 +6,7 @@ package dns
 
 // Bootstrap is the DNS RDAP bootstrap data sourced from IANA.
 //
-// Source (version: 1.0, publication date: 2026-03-12T20:00:01Z): https://data.iana.org/rdap/dns.json
+// Source (version: 1.0, publication date: 2026-03-17T18:19:24Z): https://data.iana.org/rdap/dns.json
 var Bootstrap = map[string][]string{
 	"kg": {
 		"http://rdap.cctld.kg/",
@@ -281,9 +281,6 @@ var Bootstrap = map[string][]string{
 	"frl": {
 		"https://rdap.centralnic.com/frl/",
 	},
-	"fun": {
-		"https://rdap.centralnic.com/fun/",
-	},
 	"game": {
 		"https://rdap.centralnic.com/game/",
 	},
@@ -304,9 +301,6 @@ var Bootstrap = map[string][]string{
 	},
 	"homes": {
 		"https://rdap.centralnic.com/homes/",
-	},
-	"host": {
-		"https://rdap.centralnic.com/host/",
 	},
 	"hosting": {
 		"https://rdap.centralnic.com/hosting/",
@@ -368,9 +362,6 @@ var Bootstrap = map[string][]string{
 	"nokia": {
 		"https://rdap.centralnic.com/nokia/",
 	},
-	"online": {
-		"https://rdap.centralnic.com/online/",
-	},
 	"ooo": {
 		"https://rdap.centralnic.com/ooo/",
 	},
@@ -380,14 +371,8 @@ var Bootstrap = map[string][]string{
 	"pohl": {
 		"https://rdap.centralnic.com/pohl/",
 	},
-	"press": {
-		"https://rdap.centralnic.com/press/",
-	},
 	"protection": {
 		"https://rdap.centralnic.com/protection/",
-	},
-	"pw": {
-		"https://rdap.centralnic.com/pw/",
 	},
 	"qpon": {
 		"https://rdap.centralnic.com/qpon/",
@@ -419,17 +404,11 @@ var Bootstrap = map[string][]string{
 	"sfr": {
 		"https://rdap.centralnic.com/sfr/",
 	},
-	"site": {
-		"https://rdap.centralnic.com/site/",
-	},
 	"skin": {
 		"https://rdap.centralnic.com/skin/",
 	},
 	"smart": {
 		"https://rdap.centralnic.com/smart/",
-	},
-	"space": {
-		"https://rdap.centralnic.com/space/",
 	},
 	"stc": {
 		"https://rdap.centralnic.com/stc/",
@@ -440,12 +419,6 @@ var Bootstrap = map[string][]string{
 	"storage": {
 		"https://rdap.centralnic.com/storage/",
 	},
-	"store": {
-		"https://rdap.centralnic.com/store/",
-	},
-	"tech": {
-		"https://rdap.centralnic.com/tech/",
-	},
 	"theatre": {
 		"https://rdap.centralnic.com/theatre/",
 	},
@@ -455,17 +428,11 @@ var Bootstrap = map[string][]string{
 	"tui": {
 		"https://rdap.centralnic.com/tui/",
 	},
-	"uno": {
-		"https://rdap.centralnic.com/uno/",
-	},
 	"vg": {
 		"https://rdap.centralnic.com/vg/",
 	},
 	"viva": {
 		"https://rdap.centralnic.com/viva/",
-	},
-	"website": {
-		"https://rdap.centralnic.com/website/",
 	},
 	"wme": {
 		"https://rdap.centralnic.com/wme/",
@@ -3289,6 +3256,39 @@ var Bootstrap = map[string][]string{
 	},
 	"xn--nqv7fs00ema": {
 		"https://rdap.publicinterestregistry.org/rdap/",
+	},
+	"fun": {
+		"https://rdap.radix.host/rdap/",
+	},
+	"host": {
+		"https://rdap.radix.host/rdap/",
+	},
+	"online": {
+		"https://rdap.radix.host/rdap/",
+	},
+	"press": {
+		"https://rdap.radix.host/rdap/",
+	},
+	"pw": {
+		"https://rdap.radix.host/rdap/",
+	},
+	"site": {
+		"https://rdap.radix.host/rdap/",
+	},
+	"space": {
+		"https://rdap.radix.host/rdap/",
+	},
+	"store": {
+		"https://rdap.radix.host/rdap/",
+	},
+	"tech": {
+		"https://rdap.radix.host/rdap/",
+	},
+	"uno": {
+		"https://rdap.radix.host/rdap/",
+	},
+	"website": {
+		"https://rdap.radix.host/rdap/",
 	},
 	"si": {
 		"https://rdap.register.si/",
