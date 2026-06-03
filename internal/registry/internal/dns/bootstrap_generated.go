@@ -6,16 +6,13 @@ package dns
 
 // Bootstrap is the DNS RDAP bootstrap data sourced from IANA.
 //
-// Source (version: 1.0, publication date: 2026-05-20T18:00:01Z): https://data.iana.org/rdap/dns.json
+// Source (version: 1.0, publication date: 2026-06-02T21:00:01Z): https://data.iana.org/rdap/dns.json
 var Bootstrap = map[string][]string{
 	"kg": {
 		"http://rdap.cctld.kg/",
 	},
 	"mg": {
 		"http://rdap.nic.mg/",
-	},
-	"ng": {
-		"http://rdap.nic.net.ng/",
 	},
 	"xn--kpry57d": {
 		"https://ccrdap.twnic.tw/taiwan/",
@@ -2587,6 +2584,9 @@ var Bootstrap = map[string][]string{
 	},
 	"nba": {
 		"https://rdap.nic.nba/",
+	},
+	"ng": {
+		"https://rdap.nic.net.ng/",
 	},
 	"netbank": {
 		"https://rdap.nic.netbank/",
