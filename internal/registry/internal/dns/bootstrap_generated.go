@@ -6,7 +6,7 @@ package dns
 
 // Bootstrap is the DNS RDAP bootstrap data sourced from IANA.
 //
-// Source (version: 1.0, publication date: 2026-06-02T21:00:01Z): https://data.iana.org/rdap/dns.json
+// Source (version: 1.0, publication date: 2026-06-16T22:00:01Z): https://data.iana.org/rdap/dns.json
 var Bootstrap = map[string][]string{
 	"kg": {
 		"http://rdap.cctld.kg/",
@@ -3299,10 +3299,31 @@ var Bootstrap = map[string][]string{
 	"rest": {
 		"https://rdap.registry.bar/rdap/",
 	},
+	"click": {
+		"https://rdap.registry.click/rdap/",
+	},
+	"country": {
+		"https://rdap.registry.click/rdap/",
+	},
+	"diy": {
+		"https://rdap.registry.click/rdap/",
+	},
 	"feedback": {
 		"https://rdap.registry.click/rdap/",
 	},
+	"food": {
+		"https://rdap.registry.click/rdap/",
+	},
 	"forum": {
+		"https://rdap.registry.click/rdap/",
+	},
+	"hiv": {
+		"https://rdap.registry.click/rdap/",
+	},
+	"lifestyle": {
+		"https://rdap.registry.click/rdap/",
+	},
+	"living": {
 		"https://rdap.registry.click/rdap/",
 	},
 	"observer": {
@@ -3311,7 +3332,19 @@ var Bootstrap = map[string][]string{
 	"pid": {
 		"https://rdap.registry.click/rdap/",
 	},
+	"property": {
+		"https://rdap.registry.click/rdap/",
+	},
 	"realty": {
+		"https://rdap.registry.click/rdap/",
+	},
+	"sexy": {
+		"https://rdap.registry.click/rdap/",
+	},
+	"trust": {
+		"https://rdap.registry.click/rdap/",
+	},
+	"vana": {
 		"https://rdap.registry.click/rdap/",
 	},
 	"cloud": {
@@ -3325,6 +3358,9 @@ var Bootstrap = map[string][]string{
 	},
 	"ec": {
 		"https://rdap.registry.ec/",
+	},
+	"gift": {
+		"https://rdap.registry.gift/rdap/",
 	},
 	"gy": {
 		"https://rdap.registry.gy/",
@@ -3407,47 +3443,14 @@ var Bootstrap = map[string][]string{
 	"to": {
 		"https://rdap.tonicregistry.to/rdap/",
 	},
-	"click": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
-	"country": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
-	"diy": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
-	"food": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
-	"gift": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
-	"hiv": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
-	"lifestyle": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
 	"link": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
-	"living": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
-	"property": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
-	"sexy": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
-	"trust": {
-		"https://rdap.tucowsregistry.net/rdap/",
-	},
-	"vana": {
 		"https://rdap.tucowsregistry.net/rdap/",
 	},
 	"xn--mxtq1m": {
 		"https://rdap.twnic.tw/rdap/",
+	},
+	"tz": {
+		"https://rdap.tznic.or.tz/",
 	},
 	"com": {
 		"https://rdap.verisign.com/com/v1/",
@@ -3598,9 +3601,6 @@ var Bootstrap = map[string][]string{
 	},
 	"sr": {
 		"https://whois.sr/rdap/",
-	},
-	"tz": {
-		"https://whois.tznic.or.tz/rdap/",
 	},
 	"fj": {
 		"https://www.rdap.fj/",
