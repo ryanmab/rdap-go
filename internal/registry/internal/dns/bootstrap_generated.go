@@ -6,7 +6,7 @@ package dns
 
 // Bootstrap is the DNS RDAP bootstrap data sourced from IANA.
 //
-// Source (version: 1.0, publication date: 2026-06-26T18:00:02Z): https://data.iana.org/rdap/dns.json
+// Source (version: 1.0, publication date: 2026-07-06T17:00:03Z): https://data.iana.org/rdap/dns.json
 var Bootstrap = map[string][]string{
 	"kg": {
 		"http://rdap.cctld.kg/",
@@ -457,12 +457,6 @@ var Bootstrap = map[string][]string{
 	},
 	"jnj": {
 		"https://rdap.centralnicregistry.com/jnj/",
-	},
-	"xn--55qw42g": {
-		"https://rdap.conac.cn/",
-	},
-	"xn--zfr164b": {
-		"https://rdap.conac.cn/",
 	},
 	"crown": {
 		"https://rdap.crown.fury.ca/rdap/",
@@ -1676,9 +1670,6 @@ var Bootstrap = map[string][]string{
 	"show": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
-	"sina": {
-		"https://rdap.identitydigital.services/rdap/",
-	},
 	"singles": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
@@ -1895,9 +1886,6 @@ var Bootstrap = map[string][]string{
 	"weber": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
-	"weibo": {
-		"https://rdap.identitydigital.services/rdap/",
-	},
 	"weir": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
@@ -1926,9 +1914,6 @@ var Bootstrap = map[string][]string{
 		"https://rdap.identitydigital.services/rdap/",
 	},
 	"xn--6frz82g": {
-		"https://rdap.identitydigital.services/rdap/",
-	},
-	"xn--9krt00a": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
 	"xn--b4w605ferd": {
@@ -2041,6 +2026,21 @@ var Bootstrap = map[string][]string{
 	},
 	"sling": {
 		"https://rdap.mobile-registry.com/rdap/",
+	},
+	"sina": {
+		"https://rdap.ngtld.cn/",
+	},
+	"weibo": {
+		"https://rdap.ngtld.cn/",
+	},
+	"xn--55qw42g": {
+		"https://rdap.ngtld.cn/",
+	},
+	"xn--9krt00a": {
+		"https://rdap.ngtld.cn/",
+	},
+	"xn--zfr164b": {
+		"https://rdap.ngtld.cn/",
 	},
 	"aaa": {
 		"https://rdap.nic.aaa/",
