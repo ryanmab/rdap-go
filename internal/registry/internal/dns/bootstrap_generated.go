@@ -6,7 +6,7 @@ package dns
 
 // Bootstrap is the DNS RDAP bootstrap data sourced from IANA.
 //
-// Source (version: 1.0, publication date: 2026-06-26T18:00:02Z): https://data.iana.org/rdap/dns.json
+// Source (version: 1.0, publication date: 2026-07-14T22:00:03Z): https://data.iana.org/rdap/dns.json
 var Bootstrap = map[string][]string{
 	"kg": {
 		"http://rdap.cctld.kg/",
@@ -458,12 +458,6 @@ var Bootstrap = map[string][]string{
 	"jnj": {
 		"https://rdap.centralnicregistry.com/jnj/",
 	},
-	"xn--55qw42g": {
-		"https://rdap.conac.cn/",
-	},
-	"xn--zfr164b": {
-		"https://rdap.conac.cn/",
-	},
 	"crown": {
 		"https://rdap.crown.fury.ca/rdap/",
 	},
@@ -863,6 +857,9 @@ var Bootstrap = map[string][]string{
 	"cipriani": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
+	"circle": {
+		"https://rdap.identitydigital.services/rdap/",
+	},
 	"citadel": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
@@ -1154,6 +1151,9 @@ var Bootstrap = map[string][]string{
 	"goodyear": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
+	"got": {
+		"https://rdap.identitydigital.services/rdap/",
+	},
 	"graphics": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
@@ -1281,6 +1281,9 @@ var Bootstrap = map[string][]string{
 		"https://rdap.identitydigital.services/rdap/",
 	},
 	"jll": {
+		"https://rdap.identitydigital.services/rdap/",
+	},
+	"jot": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
 	"juegos": {
@@ -1625,6 +1628,9 @@ var Bootstrap = map[string][]string{
 	"rwe": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
+	"safety": {
+		"https://rdap.identitydigital.services/rdap/",
+	},
 	"sale": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
@@ -1674,9 +1680,6 @@ var Bootstrap = map[string][]string{
 		"https://rdap.identitydigital.services/rdap/",
 	},
 	"show": {
-		"https://rdap.identitydigital.services/rdap/",
-	},
-	"sina": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
 	"singles": {
@@ -1895,9 +1898,6 @@ var Bootstrap = map[string][]string{
 	"weber": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
-	"weibo": {
-		"https://rdap.identitydigital.services/rdap/",
-	},
 	"weir": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
@@ -1926,9 +1926,6 @@ var Bootstrap = map[string][]string{
 		"https://rdap.identitydigital.services/rdap/",
 	},
 	"xn--6frz82g": {
-		"https://rdap.identitydigital.services/rdap/",
-	},
-	"xn--9krt00a": {
 		"https://rdap.identitydigital.services/rdap/",
 	},
 	"xn--b4w605ferd": {
@@ -2041,6 +2038,27 @@ var Bootstrap = map[string][]string{
 	},
 	"sling": {
 		"https://rdap.mobile-registry.com/rdap/",
+	},
+	"sina": {
+		"https://rdap.ngtld.cn/",
+	},
+	"weibo": {
+		"https://rdap.ngtld.cn/",
+	},
+	"xn--55qw42g": {
+		"https://rdap.ngtld.cn/",
+	},
+	"xn--55qx5d": {
+		"https://rdap.ngtld.cn/",
+	},
+	"xn--9krt00a": {
+		"https://rdap.ngtld.cn/",
+	},
+	"xn--io0a7i": {
+		"https://rdap.ngtld.cn/",
+	},
+	"xn--zfr164b": {
+		"https://rdap.ngtld.cn/",
 	},
 	"aaa": {
 		"https://rdap.nic.aaa/",
@@ -2699,9 +2717,6 @@ var Bootstrap = map[string][]string{
 	"rugby": {
 		"https://rdap.nic.rugby/",
 	},
-	"safety": {
-		"https://rdap.nic.safety/",
-	},
 	"sakura": {
 		"https://rdap.nic.sakura/rdap/",
 	},
@@ -3008,9 +3023,6 @@ var Bootstrap = map[string][]string{
 	"career": {
 		"https://rdap.nominet.uk/career/",
 	},
-	"circle": {
-		"https://rdap.nominet.uk/circle/",
-	},
 	"cymru": {
 		"https://rdap.nominet.uk/cymru/",
 	},
@@ -3035,9 +3047,6 @@ var Bootstrap = map[string][]string{
 	"gop": {
 		"https://rdap.nominet.uk/gop/",
 	},
-	"got": {
-		"https://rdap.nominet.uk/got/",
-	},
 	"gucci": {
 		"https://rdap.nominet.uk/gucci/",
 	},
@@ -3055,9 +3064,6 @@ var Bootstrap = map[string][]string{
 	},
 	"jobs": {
 		"https://rdap.nominet.uk/jobs/",
-	},
-	"jot": {
-		"https://rdap.nominet.uk/jot/",
 	},
 	"joy": {
 		"https://rdap.nominet.uk/joy/",
@@ -3531,12 +3537,6 @@ var Bootstrap = map[string][]string{
 		"https://rdap.zh.sgnic.sg/rdap/",
 	},
 	"xn--1qqw23a": {
-		"https://restwhois.ngtld.cn/",
-	},
-	"xn--55qx5d": {
-		"https://restwhois.ngtld.cn/",
-	},
-	"xn--io0a7i": {
 		"https://restwhois.ngtld.cn/",
 	},
 	"xn--xhq521b": {
