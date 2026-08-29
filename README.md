@@ -1,6 +1,5 @@
 [![Test](https://github.com/ryanmab/rdap-go/actions/workflows/test.yml/badge.svg)](https://github.com/ryanmab/rdap-go/actions/workflows/test.yml)
 [![Coverage](https://api.coveragerobot.com/v1/graph/github/ryanmab/rdap-go/badge.svg?token=96a67a715099de230799f42a24282371d046eeff17ae6995f0)](https://coveragerobot.com)
-[![Go Report Card](https://goreportcard.com/badge/github.com/ryanmab/rdap-go)](https://goreportcard.com/report/github.com/ryanmab/rdap-go)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/ryanmab/rdap-go)](https://pkg.go.dev/github.com/ryanmab/rdap-go)
 
 # rdap-go
